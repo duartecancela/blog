@@ -1,3 +1,7 @@
+{{--Duarte Cancela
+13683
+02/11/20221--}}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,5 +13,7 @@
 </head>
 <body>
 <h1>Post Submitted</h1>
+<h1>{{ $post['title'] }}</h1>
+<h2>{{ $post['comment'] }}</h2>
 </body>
 </html>

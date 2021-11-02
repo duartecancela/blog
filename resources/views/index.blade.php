@@ -1,3 +1,7 @@
+{{--Duarte Cancela
+13683
+02/11/20221--}}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +12,7 @@
     <title>Show All Posts</title>
 </head>
 <body>
-<h1>Posts List</h1>
+<h1>Post List</h1>
 
 </body>
 </html>

@@ -1,3 +1,8 @@
+
+{{--Duarte Cancela
+13683
+02/11/20221--}}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,10 +14,11 @@
 </head>
 <body>
     <h1>Add Post</h1>
-    <form action="/action_page.php">
-        <label for="fname">Title:</label><br>
+    <form action="store" method="POST">
+        @csrf
+        <label for="title">Title:</label><br>
         <input type="text" id="title" name="title"><br>
-        <label for="lname">Comment:</label><br>
+        <label for="commet">Comment:</label><br>
         <input type="text" id="comment" name="comment"><br>
         <br>
         <input type="submit" value="Submit">
