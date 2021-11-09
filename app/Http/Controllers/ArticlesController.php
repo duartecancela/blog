@@ -3,19 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 //made with command: php artisan make:controller ArticlesController --resource
-
 class ArticlesController extends Controller
 {
+
+    private $articles = [
+        1 => [
+            "title" => "Title 1",
+            "description" => "Description 1"
+        ],
+        2 => [
+            "title" => "Title 2",
+            "description" => "Description 2"
+        ],
+        3 => [
+            "title" => "Title 3",
+            "description" => "Description 3"
+        ]
+    ];
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('articles.index', ['articles' => $this->articles]);
     }
 
     /**
