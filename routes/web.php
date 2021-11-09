@@ -7,6 +7,7 @@
  * */
 
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,6 @@ Route::post('/posts/store', [PostsController::class, 'store'])->name('store');
 //Route::get('/posts/{post}','PostsController@show');
 //Route::get('/posts/{post}/edit','PostsController@edit');
 //Route::delete('/posts/{post}','PostsController@index');
+
+Route::resource('articles', ArticlesController::class);
 
