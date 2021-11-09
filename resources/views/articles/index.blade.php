@@ -9,5 +9,11 @@
 </head>
 <body>
 <h1>Articles index</h1>
+    @foreach ($articles as $item)
+
+        <h3>{{$item['title']}}</h3>
+        <h3>{{$item['description']}}</h3>
+        <hr>
+    @endforeach
 </body>
 </html>
