@@ -9,11 +9,16 @@ use Illuminate\View\View;
 class ArticlesController extends Controller
 {
 
-    private $articles = array (
-        array("title" => "Title 1", "description" => "Description 1"),
-        array("title" => "Title 2", "description" => "Description 2"),
-        array("title" => "Title 3", "description" => "Description 3"),
-    );
+    private $articles = array ();
+
+    public function __construct(){
+        for($i=1; $i<=3; $i++) {
+            array_push($this->articles, array(
+                "id" => $i,
+                "title" => "Title " . $i ,
+                "description" => "Description " . $i));
+        }
+    }
 
     /**
      * Display a listing of the resource.
@@ -41,10 +46,14 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): View
     {
-        array_push($this->articles, $request->all() );
+        array_push($this->articles, array(
+            'id' => count($this->articles) + 1 ,
+            'title' => $request->input('title'),
+            'description' => $request->input('description')) );
         print_r($this->articles);
+        return  view('articles.show',['article'=>$this->articles[ count($this->articles) - 1 ]]);
     }
 
     /**
