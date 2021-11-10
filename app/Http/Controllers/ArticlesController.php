@@ -12,7 +12,8 @@ class ArticlesController extends Controller
     private $articles = array ();
 
     public function __construct(){
-        for($i=1; $i<=3; $i++) {
+        $numberArticles = 3;
+        for($i = 1; $i <= $numberArticles; $i++) {
             array_push($this->articles, array(
                 "id" => $i,
                 "title" => "Title " . $i ,
