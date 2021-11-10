@@ -9,20 +9,11 @@ use Illuminate\View\View;
 class ArticlesController extends Controller
 {
 
-    private $articles = [
-        1 => [
-            "title" => "Title 1",
-            "description" => "Description 1"
-        ],
-        2 => [
-            "title" => "Title 2",
-            "description" => "Description 2"
-        ],
-        3 => [
-            "title" => "Title 3",
-            "description" => "Description 3"
-        ]
-    ];
+    private $articles = array (
+        array("title" => "Title 1", "description" => "Description 1"),
+        array("title" => "Title 2", "description" => "Description 2"),
+        array("title" => "Title 3", "description" => "Description 3"),
+    );
 
     /**
      * Display a listing of the resource.
@@ -39,9 +30,9 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -52,7 +43,8 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        array_push($this->articles, $request->all() );
+        print_r($this->articles);
     }
 
     /**

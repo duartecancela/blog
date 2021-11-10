@@ -12,8 +12,8 @@
     <title>Post Submitted</title>
 </head>
 <body>
-<h1>Post Submitted</h1>
-<h1>{{ $post['title'] }}</h1>
-<h2>{{ $post['comment'] }}</h2>
+    <h1>Post Submitted</h1>
+    <h1>{{ $post['title'] }}</h1>
+    <h2>{{ $post['comment'] }}</h2>
 </body>
 </html>

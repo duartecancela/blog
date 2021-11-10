@@ -8,9 +8,8 @@
     <title>Articles Index</title>
 </head>
 <body>
-<h1>Articles index</h1>
+<h1>Articles Index</h1>
     @foreach ($articles as $item)
-
         <h3>{{$item['title']}}</h3>
         <h3>{{$item['description']}}</h3>
         <hr>
