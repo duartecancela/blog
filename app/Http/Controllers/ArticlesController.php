@@ -9,7 +9,7 @@ use Illuminate\View\View;
 class ArticlesController extends Controller
 {
 
-    protected $articles = array ();
+    private $articles = array ();
 
     public function __construct(){
         $numberArticles = 3;
@@ -28,6 +28,7 @@ class ArticlesController extends Controller
      */
     public function index(): View
     {
+        print_r($this->articles);
         return view('articles.index', ['articles' => $this->articles]);
     }
 
@@ -38,7 +39,7 @@ class ArticlesController extends Controller
      */
     public function create(): View
     {
-        return view('articles.create');
+        return view('articles.create', []);
     }
 
     /**
@@ -53,6 +54,7 @@ class ArticlesController extends Controller
             'id' => count($this->articles) + 1 ,
             'title' => $request->input('title'),
             'description' => $request->input('description')) );
+
         print_r($this->articles);
         return  view('articles.show',['article'=>$this->articles[count($this->articles) - 1]]);
     }
@@ -65,7 +67,8 @@ class ArticlesController extends Controller
      */
     public function show(int $id): View
     {
-        return  view('articles.show',['article'=>$this->articles[$id]]);
+
+        return  view('articles.show',[ 'article'=>$this->articles[$id - 1]]);
     }
 
     /**

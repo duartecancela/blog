@@ -33,6 +33,10 @@ Route::get('/posts/create', [PostsController::class, 'create'])->name('create');
 //Route::get('/posts/{post}/edit','PostsController@edit');
 //Route::delete('/posts/{post}','PostsController@index');
 
-Route::resource('articles', ArticlesController::class);
-Route::post('articles/store', [ArticlesController::class, 'store'])->name('store');
+//Route::resource('articles', ArticlesController::class);
+Route::get('articles/', [ArticlesController::class, 'index'])->name('articles.index');
+Route::get('articles/create', [ArticlesController::class, 'create'])->name('articles.create');
+Route::post('articles/store', [ArticlesController::class, 'store'])->middleware('CheckFields')->name('articles.store');
+Route::get('articles/show', [ArticlesController::class, 'show'])->name('articles.store');
+Route::get('/articles/{id}',[ArticlesController::class, 'show'])->name('articles.show');
 
