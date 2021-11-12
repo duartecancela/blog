@@ -9,7 +9,7 @@ use Illuminate\View\View;
 class ArticlesController extends Controller
 {
 
-    private $articles = array ();
+    protected $articles = array ();
 
     public function __construct(){
         $numberArticles = 3;
@@ -54,18 +54,18 @@ class ArticlesController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description')) );
         print_r($this->articles);
-        return  view('articles.show',['article'=>$this->articles[ count($this->articles) - 1 ]]);
+        return  view('articles.show',['article'=>$this->articles[count($this->articles) - 1]]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id): View
     {
-        //
+        return  view('articles.show',['article'=>$this->articles[$id]]);
     }
 
     /**
