@@ -13,7 +13,7 @@ class ArticlesController extends Controller
 
     public function __construct(){
         $numberArticles = 3;
-        for($i = 1; $i <= $numberArticles; $i++) {
+        for($i = 0; $i < $numberArticles; $i++) {
             array_push($this->articles, array(
                 "id" => $i,
                 "title" => "Title " . $i ,
@@ -68,7 +68,7 @@ class ArticlesController extends Controller
     public function show(int $id): View
     {
 
-        return  view('articles.show',[ 'article'=>$this->articles[$id - 1]]);
+        return  view('articles.show',[ 'article'=>$this->articles[$id]]);
     }
 
     /**
@@ -77,9 +77,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id): View
     {
-        //
+        return  view('articles.edit',[ 'article'=>$this->articles[$id]]);
     }
 
     /**
@@ -89,9 +89,14 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): View
     {
-        //
+        $this->articles[$id] = [
+            'id' => $id,
+            'title'=> $request->input('title'),
+            'description'=> $request->input('description')];
+        print_r($this->articles);
+        return  view('articles.show',['article'=>$this->articles[$id]]);
     }
 
     /**
@@ -100,8 +105,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id): View
     {
-        //
+        unset($this->articles[$id]);
+
+        print_r($this->articles);
+        return view('articles.index', ['articles' => $this->articles]);;
     }
 }

@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Post Submitted</title>
+    <title>Post Nº {{ $article['id'] }}</title>
 </head>
 <body>
-<h1>Post Submitted</h1>
+<h1>Post Nº {{ $article['id'] }}</h1>
 <h2>{{ $article['id'] }}</h2>
 <h1>{{ $article['title'] }}</h1>
 <h2>{{ $article['description'] }}</h2>

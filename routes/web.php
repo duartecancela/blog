@@ -37,6 +37,9 @@ Route::get('/posts/create', [PostsController::class, 'create'])->name('create');
 Route::get('articles/', [ArticlesController::class, 'index'])->name('articles.index');
 Route::get('articles/create', [ArticlesController::class, 'create'])->name('articles.create');
 Route::post('articles/store', [ArticlesController::class, 'store'])->middleware('CheckFields')->name('articles.store');
-Route::get('articles/show', [ArticlesController::class, 'show'])->name('articles.store');
+//Route::get('articles/show', [ArticlesController::class, 'show'])->name('articles.store');
 Route::get('/articles/{id}',[ArticlesController::class, 'show'])->name('articles.show');
+Route::get('/articles/{id}/edit',[ArticlesController::class, 'edit'])->name('articles.edit');
+Route::get('/articles/{id}/update',[ArticlesController::class, 'update'])->name('articles.update');
+Route::get('/articles/{id}/destroy',[ArticlesController::class, 'destroy'])->name('articles.destroy');
 
