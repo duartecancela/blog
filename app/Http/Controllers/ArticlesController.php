@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 //made with command: php artisan make:controller ArticlesController --resource
@@ -89,14 +90,15 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id): View
+    public function update(Request $request, $id)
     {
         $this->articles[$id] = [
             'id' => $id,
             'title'=> $request->input('title'),
             'description'=> $request->input('description')];
         print_r($this->articles);
-        return  view('articles.show',['article'=>$this->articles[$id]]);
+        return redirect()->route('api.data', [$id]);
+//        return  view('articles.show',['article'=>$this->articles[$id]]);
     }
 
     /**
@@ -111,5 +113,9 @@ class ArticlesController extends Controller
 
         print_r($this->articles);
         return view('articles.index', ['articles' => $this->articles]);;
+    }
+
+    public function getData($id){
+        return $this->articles[$id];
     }
 }
