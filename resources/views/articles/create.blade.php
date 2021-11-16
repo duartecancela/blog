@@ -9,12 +9,14 @@
 </head>
 <body>
 <h1>Add Article</h1>
-<form action="store" method="POST">
+<form action="{{ url('articles/store') }}" method="POST">
     @csrf
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description"><br>
+    <label for="text">Text:</label><br>
+    <input type="text" id="text" name="text"><br>
+    <label for="picture">Picture:</label><br>
+    <input type="text" id="picture" name="picture"><br>
     <br>
     <input type="submit" value="Submit">
 </form>

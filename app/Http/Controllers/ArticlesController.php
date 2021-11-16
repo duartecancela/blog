@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -10,18 +13,18 @@ use Illuminate\View\View;
 class ArticlesController extends Controller
 {
 
-    private $articles = array ();
-
-    public function __construct(){
-        $numberArticles = 3;
-        for($i = 0; $i < $numberArticles; $i++) {
-            array_push($this->articles, array(
-                "id" => $i,
-                "title" => "Title " . $i,
-                "description" => "Description " . $i,
-                "image" => "http://localhost:8000/image" . $i . ".jpg" ));
-        }
-    }
+    private $articles = [];
+//
+//    public function __construct(){
+//        $numberArticles = 3;
+//        for($i = 0; $i < $numberArticles; $i++) {
+//            array_push($this->articles, array(
+//                "id" => $i,
+//                "title" => "Title " . $i,
+//                "description" => "Description " . $i,
+//                "image" => "http://localhost:8000/image" . $i . ".jpg" ));
+//        }
+//    }
 
     /**
      * Display a listing of the resource.
@@ -30,8 +33,13 @@ class ArticlesController extends Controller
      */
     public function index(): View
     {
-        print_r($this->articles);
-        return view('articles.index', ['articles' => $this->articles]);
+
+//        $this->articles = DB::select('select * from articles');
+//        dd($this->articles);
+
+//        $this->articles = DB::table('articles')->get();
+        $articles = Article::all();
+        return view('articles.index', ['articles' => $articles]);
     }
 
     /**
@@ -52,13 +60,18 @@ class ArticlesController extends Controller
      */
     public function store(Request $request): View
     {
-        array_push($this->articles, array(
-            'id' => count($this->articles) + 1 ,
-            'title' => $request->input('title'),
-            'description' => $request->input('description')) );
+//        array_push($this->articles, array(
+//            'id' => count($this->articles) + 1 ,
+//            'title' => $request->input('title'),
+//            'description' => $request->input('description')) );
 
-        print_r($this->articles);
-        return  view('articles.show',['article'=>$this->articles[count($this->articles) - 1]]);
+        $articles = new Article();
+        $articles->title = $request->input('title');
+        $articles->text = $request->input('text');
+        $articles->picture = $request->input('picture');
+        $articles->save();
+        dd($articles);
+        return  view('articles.show',['article'=> $articles[0]]);
     }
 
     /**

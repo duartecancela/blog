@@ -10,10 +10,10 @@
 <body>
 <h1>Articles Index</h1>
     @foreach ($articles as $item)
-        <h3>{{$item['id']}}</h3>
-        <h3>{{$item['title']}}</h3>
-        <h3>{{$item['description']}}</h3>
-        <h3>{{$item['image']}}</h3>
+        <h3>{{$item->id}}</h3>
+        <h3>{{$item->title}}</h3>
+        <h3>{{$item->text}}</h3>
+        <h3>{{$item->picture}}</h3>
         <hr>
     @endforeach
 </body>
