@@ -13,6 +13,7 @@
         <h3>{{$item['id']}}</h3>
         <h3>{{$item['title']}}</h3>
         <h3>{{$item['description']}}</h3>
+        <h3>{{$item['image']}}</h3>
         <hr>
     @endforeach
 </body>

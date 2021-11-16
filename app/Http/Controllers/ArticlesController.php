@@ -17,8 +17,9 @@ class ArticlesController extends Controller
         for($i = 0; $i < $numberArticles; $i++) {
             array_push($this->articles, array(
                 "id" => $i,
-                "title" => "Title " . $i ,
-                "description" => "Description " . $i));
+                "title" => "Title " . $i,
+                "description" => "Description " . $i,
+                "image" => "http://localhost:8000/image" . $i . ".jpg" ));
         }
     }
 

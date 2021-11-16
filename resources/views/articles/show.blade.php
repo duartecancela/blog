@@ -12,5 +12,6 @@
 <h2>{{ $article['id'] }}</h2>
 <h1>{{ $article['title'] }}</h1>
 <h2>{{ $article['description'] }}</h2>
+<h2>{{ $article['image'] }}</h2>
 </body>
 </html>
