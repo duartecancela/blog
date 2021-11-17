@@ -49,7 +49,7 @@ class ArticlesController extends Controller
      */
     public function create(): View
     {
-        return view('articles.create', []);
+        return view('articles.create');
     }
 
     /**
@@ -58,20 +58,20 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): View
+    public function store(Request $request): view
     {
 //        array_push($this->articles, array(
 //            'id' => count($this->articles) + 1 ,
 //            'title' => $request->input('title'),
 //            'description' => $request->input('description')) );
 
+
         $articles = new Article();
         $articles->title = $request->input('title');
         $articles->text = $request->input('text');
         $articles->picture = $request->input('picture');
         $articles->save();
-        dd($articles);
-        return  view('articles.show',['article'=> $articles[0]]);
+        return  view('articles.show',['article'=> $articles]);
     }
 
     /**
@@ -82,8 +82,9 @@ class ArticlesController extends Controller
      */
     public function show(int $id): View
     {
+        $article = Article::where('id',$id)->first();
 
-        return  view('articles.show',[ 'article'=>$this->articles[$id]]);
+        return  view('articles.show',[ 'article'=>$article]);
     }
 
     /**

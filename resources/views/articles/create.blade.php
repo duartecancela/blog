@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Add Article</h1>
-<form action="{{ url('articles/store') }}" method="POST">
+<form action="store" method="POST">
     @csrf
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>

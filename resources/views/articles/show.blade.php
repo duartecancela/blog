@@ -5,13 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Post Nº {{ $article['id'] }}</title>
+    <title>Post Nº {{ $article }}</title>
 </head>
 <body>
 <h1>Post Nº {{ $article['id'] }}</h1>
 <h2>{{ $article['id'] }}</h2>
 <h1>{{ $article['title'] }}</h1>
-<h2>{{ $article['description'] }}</h2>
-<h2>{{ $article['image'] }}</h2>
+<h2>{{ $article['text'] }}</h2>
+<h2>{{ $article['picture'] }}</h2>
 </body>
 </html>

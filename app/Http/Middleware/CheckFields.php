@@ -17,9 +17,10 @@ class CheckFields
     public function handle(Request $request, Closure $next)
     {
         $title=$request->input('title');
-        $description=$request->input('description');
+        $text=$request->input('text');
+        $picture=$request->input('picture');
 
-        if(empty($title)||empty($description)){
+        if(empty($title)||empty($text)||empty($picture)){
             return redirect('/articles/create');
         }
 
