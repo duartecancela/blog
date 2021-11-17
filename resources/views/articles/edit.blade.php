@@ -8,15 +8,15 @@
     <title>Add Article</title>
 </head>
 <body>
-<h1>Edit Article Nº {{ $article['id'] }} </h1>
+<h1>Edit Article Nº {{ $id }} </h1>
 <form action="update" method="PUT">
     @csrf
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description"><br>
-    <label for="image">Image:</label><br>
-    <input type="text" id="image" name="image"><br>
+    <label for="text">Text:</label><br>
+    <input type="text" id="text" name="text"><br>
+    <label for="picture">Image:</label><br>
+    <input type="text" id="picture" name="picture"><br>
     <br>
     <input type="submit" value="Submit">
 </form>

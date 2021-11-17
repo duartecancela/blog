@@ -95,7 +95,7 @@ class ArticlesController extends Controller
      */
     public function edit($id): View
     {
-        return  view('articles.edit',[ 'article'=>$this->articles[$id]]);
+        return  view('articles.edit', [ 'id'=>$id ]);
     }
 
     /**
@@ -105,15 +105,21 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): View
     {
-        $this->articles[$id] = [
-            'id' => $id,
-            'title'=> $request->input('title'),
-            'description'=> $request->input('description')];
-        print_r($this->articles);
-        return redirect()->route('api.data', [$id]);
-//        return  view('articles.show',['article'=>$this->articles[$id]]);
+//        $this->articles[$id] = [
+//            'id' => $id,
+//            'title'=> $request->input('title'),
+//            'description'=> $request->input('description')];
+//        print_r($this->articles);
+
+        Article::where('id', $id)->update(['title' => $request->input('title')]);
+        Article::where('id', $id)->update(['text' => $request->input('text')]);
+        Article::where('id', $id)->update(['picture' => $request->input('picture')]);
+
+        $article = Article::where('id',$id)->first();
+//        return redirect()->route('api.data', [$id]);
+        return  view('articles.show',[ 'article'=>$article ]);
     }
 
     /**
